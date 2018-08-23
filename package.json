@@ -1,7 +1,7 @@
 {
-  "name": "mern_boilerplate",
+  "name": "sep_smos",
   "version": "1.0.0",
-  "description": "A boiler plate for the MERN stack",
+  "description": "Stationary Management and Ordering System Built with the MERN Stack",
   "main": "index.js",
   "scripts": {
     "install-dependencies": "npm install && npm run install-server && npm run install-client",
@@ -20,10 +20,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rishyahluwalia/mern_boilerplate.git"
+    "url": "git+https://github.com/rishyahluwalia/sep_smos.git"
   },
   "bugs": {
-    "url": "https://github.com/rishyahluwalia/mern_boilerplate/issues"
+    "url": "https://github.com/rishyahluwalia/sep_smos/issues"
   },
-  "homepage": "https://github.com/rishyahluwalia/mern_boilerplate#readme"
+  "homepage": "https://github.com/rishyahluwalia/sep_smos#readme"
 }
