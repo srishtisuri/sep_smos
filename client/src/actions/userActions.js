@@ -72,18 +72,35 @@ export const checkAuth = () => dispatch => {
                 dispatch({ type: "LOADING_FIN" })    
             }, 250)
         })
+        .catch(err => console.log(err))
 }
 
-export const signup = (userNumber, password) => dispatch => {
+export const signup = (userNumber, password, history) => dispatch => {
+    dispatch({ type: "LOADING_START" })
+    dispatch(pushErr({
+        type: "CLEAR_ERRORS",
+    }))
     axios.post('/api/users/signup', {
         userNumber,
         password
     })
         .then(res => {
-            dispatch({
-                type: "SIGNUP",
-                payload: res.data
-            })
+            if (res.data.success) {
+                dispatch(pushErr({
+                    type: "SIGNUP_SUCCESS",
+                }))
+                history.push('/')
+            } else {
+                dispatch(pushErr({
+                    type: "SIGNUP_FAIL",
+                    payload: "Something Went Wrong"
+                }))
+            }
+        })
+        .then(() => {
+            setTimeout(()=>{
+                dispatch({ type: "LOADING_FIN" })    
+            }, 250)
         })
         .catch(err => console.log(err))
 }

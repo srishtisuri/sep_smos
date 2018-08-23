@@ -7,6 +7,10 @@ export default (state = initialState, action) => {
             ...state,
             errors: [...state.errors, action.payload]
         }
+        case "SIGNUP_FAIL": return{
+            ...state,
+            errors: [...state.errors, action.payload]
+        }
         case "LOGOUT_FAIL": return{
             ...state,
             errors: [...state.errors, action.payload]

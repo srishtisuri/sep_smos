@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Label, Form, FormGroup, Input, Button } from 'reactstrap';
-import { login, signup } from '../actions/userActions';
+import { signup } from '../actions/userActions';
 import { connect } from 'react-redux';
 
 class Signup extends Component {
@@ -14,15 +14,20 @@ class Signup extends Component {
         };
     }
 
+    componentDidMount() {
+        if (this.props.authenticated) {
+            this.props.history.push('/dashboard/' + this.props.user.userNumber)
+        }
+    }
 
     handleSubmit = (event) => {
         event.preventDefault();
         // console.log(this.props)
         this.props.dispatch(signup(
             this.state.userNumber,
-            this.state.password
+            this.state.password,
+            this.props.history
         ));
-        this.props.history.push('/')
     }
     render() {
         return (
@@ -66,4 +71,12 @@ class Signup extends Component {
     }
 }
 
-export default connect()(Signup);
+function mapStateToProps(state){
+    return{
+        errors: state.error.errors,
+        user: state.user.user,
+        authenticated: state.user.authenticated,
+    }
+}
+
+export default connect(mapStateToProps)(Signup);
