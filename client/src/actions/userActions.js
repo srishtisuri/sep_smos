@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { pushErr } from './errorActions';
 
-export const login = (username, password, history) => dispatch => {
+export const login = (userNumber, password, history) => dispatch => {
     dispatch({ type: "LOADING_START" })
     dispatch(pushErr({
         type: "CLEAR_ERRORS",
     }))
     axios.post('/api/users/login', {
-        username,
+        userNumber,
         password
     }).then(res => {
         if (res.data.success) {
@@ -15,7 +15,7 @@ export const login = (username, password, history) => dispatch => {
                 type: "AUTH_SUCCESS",
                 payload: res.data.user
             })
-            history.push('/dashboard/' + res.data.user.username)
+            history.push('/dashboard/' + res.data.user.userNumber)
         } else {
             dispatch(pushErr({
                 type: "AUTH_FAIL",
@@ -51,6 +51,9 @@ export const logout = (history) => dispatch => {
 
 export const checkAuth = () => dispatch => {
     dispatch({ type: "LOADING_START" })
+    dispatch(pushErr({
+        type: "CLEAR_ERRORS",
+    }))
     axios.get('/api/users/currentUser')
         .then(res => {
             if (res.data.exists) {
@@ -71,12 +74,9 @@ export const checkAuth = () => dispatch => {
         })
 }
 
-export const signup = (firstname, surname, username, email, password) => dispatch => {
+export const signup = (userNumber, password) => dispatch => {
     axios.post('/api/users/signup', {
-        firstname,
-        surname,
-        username,
-        email,
+        userNumber,
         password
     })
         .then(res => {

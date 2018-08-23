@@ -7,38 +7,37 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            userNumber: '',
             password: ''
         };
     }
 
     componentDidMount() {
         if (this.props.authenticated) {
-            this.props.history.push('/dashboard/' + this.props.user.username)
+            this.props.history.push('/dashboard/' + this.props.user.userNumber)
         }
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch(login(this.state.username, this.state.password, this.props.history))
+        this.props.dispatch(login(this.state.userNumber, this.state.password, this.props.history))
     }
 
     render() {
         return (
             <Container className="mt-5 d-flex justify-content-center">
                 <Row className="justify-content-center">
-
                     <Form onSubmit={this.handleSubmit} style={{ width: "400px" }}>
                         <FormGroup>
-                            <Label><b>Username</b></Label>
+                            <Label><b>Staff or Student Number</b></Label>
                             <Input
                                 invalid={this.props.errors.length > 0}
                                 type="text"
-                                name="username"
-                                placeholder="Enter a username"
+                                name="userNumber"
+                                placeholder="Enter a Staff or Student Number"
                                 onChange={(event) => {
                                     this.setState({
-                                        username: event.target.value
+                                        userNumber: event.target.value
                                     });
                                 }}
                             ></Input>

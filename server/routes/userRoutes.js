@@ -27,13 +27,9 @@ router.get('/currentUser', (req, res) => {
 
 router.post('/signup', (req, res) => {
     const newUser = new User({
-        firstname: req.body.firstname,
-        surname: req.body.surname,
-        username: req.body.username,
-        email: req.body.email,
+        userNumber: req.body.userNumber,
         password: req.body.password
     })
-
     newUser.save()
         .then(data => res.json(data))
         .catch(err => console.log(err));
@@ -44,6 +40,7 @@ router.post('/login', function(req, res, next){
     // console.log("It worked");
     // res.send("Hi");
     passport.authenticate('local', function(err, user, info){
+
         if (err) { return next(err); }
         if (!user) { return res.json({success:false}); }
         req.logIn(user, function(err) {
@@ -72,9 +69,12 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
-passport.use(new LocalStrategy(
+passport.use(new LocalStrategy({
+    usernameField: 'userNumber',
+    passwordField: 'password'
+},
     function (username, password, done) {
-        User.findOne({ username: username }, function (err, user) {
+        User.findOne({ userNumber: username }, function (err, user) {
             if (err) { return done(err); }
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });

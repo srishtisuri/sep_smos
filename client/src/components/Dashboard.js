@@ -22,7 +22,7 @@ class Dashboard extends Component {
                 </Col>
                 <Col style={{ border: "1px solid blue" }} md="9">
                 <h5>Content</h5>
-                {this.props.authenticated && <h3>Welcome, {this.props.user.firstname}</h3>}
+                {this.props.authenticated && <h3>Welcome, {this.props.user.userNumber}</h3>}
                 </Col>
             </Row>
         );

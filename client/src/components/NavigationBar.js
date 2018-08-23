@@ -28,7 +28,7 @@ class NavigationBar extends Component {
     return (
       <div>
         <Navbar color="dark" dark toggleable>
-          <NavbarBrand href="/">MERN Login</NavbarBrand>
+          <NavbarBrand href="/">SMOS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <NavOptions />
