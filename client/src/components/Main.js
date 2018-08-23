@@ -9,7 +9,7 @@ import NotFound from './NotFound';
 import { checkAuth } from '../actions/userActions';
 import Loading from './Loading';
 import { Container } from 'reactstrap';
-
+import Test from './Test';
 
 class Main extends React.Component {
 
@@ -30,6 +30,8 @@ class Main extends React.Component {
                     <Route exact path="/" component={Login} />
                     <Route exact path="/signup" component={Signup} />
                     <Route path="/dashboard" component={Dashboard} />
+                    {/* This is a test component for you to play around with*/}
+                    <Route path="/test" component={Test} />
                     <Route component={NotFound} />
                 </Switch>
             );
