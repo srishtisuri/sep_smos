@@ -1,0 +1,29 @@
+{
+  "name": "mern_boilerplate",
+  "version": "1.0.0",
+  "description": "A boiler plate for the MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "install-dependencies": "npm install && npm run install-server && npm run install-client",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "client": "cd client && npm run start",
+    "server": "cd server && npm run start",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^3.6.1",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishyahluwalia/mern_boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rishyahluwalia/mern_boilerplate/issues"
+  },
+  "homepage": "https://github.com/rishyahluwalia/mern_boilerplate#readme"
+}
