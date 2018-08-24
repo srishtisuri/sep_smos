@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
+import ViewItems from './ViewItems';
 import NotFound from './NotFound';
 import { checkAuth } from '../actions/userActions';
 import Loading from './Loading';
@@ -30,6 +31,7 @@ class Main extends React.Component {
                     <Route exact path="/" component={Login} />
                     <Route exact path="/signup" component={Signup} />
                     <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/viewitems" component={ViewItems} />
                     <Route component={NotFound} />
                 </Switch>
             );

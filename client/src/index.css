@@ -1,13 +1,72 @@
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 body,
-html{
+html {
   height: 100%;
 }
-.bg{
-  height: 100vh;
-  background-color: #e1e1e1
+
+.bg {
+  height: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+.sidebar {
+  background-color: #e1e1e1;
+  border: 1px solid #97a0af;
+  padding-top: 20px;
+  height: 100%;
+}
+
+.sidebar > li {
+  padding-bottom:5px;
+}
+
+.sidebar > li > a {
+  color: black;
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+
+.flexwrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.viewitems {
+  padding-top: 15px;
+}
+
+.item {
+  border: 1px solid #97a0af;
+  width: 45%; 
+  display: flex; 
+  flex: 1 1 47.5%; 
+  margin-right: 2.5%; 
+  margin-bottom: 20px;
+}
+.item > .price {
+  width: 20%; 
+  margin: auto; 
+  display: flex; 
+  flex: 1 0 auto;
+  padding-left: 5px;
+}
+
+.item > .details {
+  padding-top: 15px;
+  margin: auto;
+  width: 80%; 
+  display: flex; 
+  flex: 1 0 auto; 
+  flex-direction: column;
 }

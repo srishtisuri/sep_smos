@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import SideBar from './SideBar';
 
 class Dashboard extends Component {
 
@@ -13,14 +13,9 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <Row className="text-center">
-                <Col style={{ border: "1px solid red" }} md="3">
-                    <h5>Side Menu</h5>
-                    <li><Link to="/">Link 1</Link></li>
-                    <li><Link to="/">Link 2</Link></li>
-                    <li><Link to="/">Link 3</Link></li>
-                </Col>
-                <Col style={{ border: "1px solid blue" }} md="9">
+            <Row classname="row">
+                <SideBar/>
+                <Col className="text-center" md="9">
                 <h5>Content</h5>
                 {this.props.authenticated && <h3>Welcome, {this.props.user.userNumber}</h3>}
                 </Col>
