@@ -104,16 +104,3 @@ export const signup = (userNumber, password, history) => dispatch => {
         })
         .catch(err => console.log(err))
 };
-
-export const getItems = () => dispatch => {
-    axios.get('/api/users/getItems')
-    .then(res => {
-       if (res.data) {
-            dispatch({
-               type: "GET_ITEMS",
-               payload: res.data
-            })
-        }
-    })
-    .catch(err => console.log(err))
-};

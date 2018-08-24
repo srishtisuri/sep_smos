@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
+const itemRoutes = require('./routes/itemRoutes');
 const session = require('express-session');
 const passport = require('passport');
 
@@ -30,6 +31,7 @@ app.use(passport.session());
 
 // Set up routes
 app.use('/api/users', userRoutes);
+app.use('/api/items', itemRoutes);
 
 // Initialise the application
 app.listen(port, () => {

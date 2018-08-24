@@ -25,25 +25,6 @@ router.get('/currentUser', (req, res) => {
     }
 })
 
-router.get('/getItems', (req, res) => {
-   const newItems = [];
-   for (let i=0;i<50;i++){newItems.push(createItem())};
-   Item.find()
-        .then(data => res.json({items: newItems}) )
-        .catch(err => console.log(err));
-})
-
-createItem = function() {
-    return new Item({
-        ID: 123456,
-        Name: "Stapler",
-        Type: "Stationery",
-        Price: 10,
-        Quantity: 30,
-        Description: "Used to staple things"
-    });
-};
-
 router.post('/signup', (req, res) => {
     const newUser = new User({
         userNumber: req.body.userNumber,

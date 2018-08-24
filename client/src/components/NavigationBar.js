@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -28,7 +30,7 @@ class NavigationBar extends Component {
     return (
       <div>
         <Navbar color="dark" dark toggleable>
-          <NavbarBrand href="/">SMOS</NavbarBrand>
+          <NavbarBrand style={{color:"white", cursor:"pointer"}} onClick={()=>{this.props.history.push('/')}}>SMOS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <NavOptions />
@@ -39,4 +41,4 @@ class NavigationBar extends Component {
   }
 }
 
-export default NavigationBar;
+export default withRouter(connect()(NavigationBar));

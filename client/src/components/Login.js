@@ -26,7 +26,8 @@ class Login extends Component {
 
     render() {
         return (
-            <Container className="mt-5 d-flex justify-content-center">
+            <div className="d-flex justify-content-center loginBg" style={{height:'100%'}}>
+            <Container className="mt-5">
                 <Row className="justify-content-center">
                     <Form onSubmit={this.handleSubmit} style={{ width: "400px" }}>
                         <FormGroup>
@@ -69,6 +70,7 @@ class Login extends Component {
                     </Form>
                 </Row>
             </Container>
+            </div>
         );
     }
 }

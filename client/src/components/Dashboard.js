@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
+import ViewItems from './ViewItems';
+import { Switch, Route } from 'react-router-dom';
 import SideBar from './SideBar';
 
 class Dashboard extends Component {
@@ -13,7 +15,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <Row classname="row">
+            <Row className="row">
                 <SideBar/>
                 <Col className="text-center" md="9">
                 <h5>Content</h5>
