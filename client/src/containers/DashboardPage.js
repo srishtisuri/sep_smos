@@ -13,8 +13,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <Col className="text-center contentBg" md="10">
-                <h5>Content</h5>
+            <Col className="text-center contentBg pt-3 align-items-center" md="10">
                 {this.props.authenticated && <h3>Welcome, {this.props.user.userNumber}</h3>}
             </Col>
         );

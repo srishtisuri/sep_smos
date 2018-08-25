@@ -9,6 +9,9 @@ import {
     Button
 } from 'reactstrap';
 import { checkAuth } from '../actions/userActions';
+import { FaSignOutAlt } from 'react-icons/fa';
+import { FaSignInAlt } from 'react-icons/fa';
+import { FaUserPlus } from 'react-icons/fa';
 
 
 class NavOptions extends React.Component {
@@ -21,7 +24,7 @@ class NavOptions extends React.Component {
         const logOutBtn = (
             <NavItem>
                 <NavLink onClick={() => { this.handleLogout() }}>
-                    <Button color="danger">Log Out</Button>
+                    <Button color="danger" size="sm"><FaSignOutAlt/> Log Out</Button>
                 </NavLink>
             </NavItem>
         );
@@ -29,7 +32,7 @@ class NavOptions extends React.Component {
         const signUpBtn = (
             <NavItem>
                 <NavLink onClick={() => { this.props.dispatch(checkAuth()); this.props.history.push('/signup') }}>
-                    <Button color="primary">Sign Up</Button>
+                    <Button color="primary" size="sm"><FaUserPlus/> Sign Up</Button>
                 </NavLink>
             </NavItem>
         );
@@ -37,7 +40,7 @@ class NavOptions extends React.Component {
         const loginBtn = (
             <NavItem>
                 <NavLink onClick={() => { this.props.dispatch(checkAuth()); this.props.history.push('/')}}>
-                    <Button color="success">Login</Button>
+                    <Button color="success" size="sm"><FaSignInAlt/> Login</Button>
                 </NavLink>
             </NavItem>
         );

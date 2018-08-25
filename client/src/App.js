@@ -23,10 +23,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="bg d-flex flex-column">
-          <Row className="d-flex w-100" noGutters style={{border:"1px solid blue"}}>
+          <Row className="d-flex w-100 sticky-top" noGutters>
             <NavigationBar />
           </Row>
-          <Row className="d-flex w-100" noGutters style={{border:"1px solid red", flex:1}}>
+          <Row className="d-flex w-100" noGutters style={{flex:1}}>
             {this.props.authenticated && <SideBar/>}
             {!this.props.loading ? <Routes /> : loader }
           </Row>

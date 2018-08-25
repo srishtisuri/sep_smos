@@ -8,8 +8,8 @@ import {
   NavbarBrand,
 } from 'reactstrap';
 import NavOptions from './NavOptions';
-import { Col } from 'reactstrap'
-
+import { Col } from 'reactstrap';
+import { FaHome } from 'react-icons/fa';
 
 class NavigationBar extends Component {
   constructor(props) {
@@ -30,8 +30,8 @@ class NavigationBar extends Component {
   render() {
     return (
       <Col>
-        <Navbar color="dark" dark toggleable>
-          <NavbarBrand style={{ color: "white", cursor: "pointer" }} onClick={() => { this.props.history.push('/') }}>SMOS</NavbarBrand>
+        <Navbar color="dark shadow" toggleable>
+          <NavbarBrand onClick={() => { this.props.history.push('/') }}><FaHome/>  SMOS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <NavOptions />

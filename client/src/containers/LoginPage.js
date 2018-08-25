@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
 import { login } from '../actions/userActions';
+import { FaSignInAlt } from 'react-icons/fa';
 
 class LoginPage extends Component {
     componentDidMount() {
@@ -52,7 +53,7 @@ class LoginPage extends Component {
                                 })}
                             </FormGroup>
                             <FormGroup>
-                                <Button color="success" type="submit">Login</Button>
+                                <Button color="success" type="submit" size="sm"><FaSignInAlt/> Login</Button>
                             </FormGroup>
                             <FormGroup>
                                 <Label>Don't have an account? <Link to={{ pathname: '/signup' }}>Sign up now</Link></Label>

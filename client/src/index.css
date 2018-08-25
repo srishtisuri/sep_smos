@@ -19,21 +19,29 @@ body, html{
   background-color: #ffffff;
 }
 
+.navbar {
+  height: 48px;
+}
+
+.navbar-brand {
+  color: white !important;
+   cursor: pointer;
+}
+
 .sidebar {
-  background-color: #e1e1e1;
-  border: 1px solid #97a0af;
+  border-right: 1px solid #b7beca;
   padding-top: 20px;
   height: 100%;
 }
 
-.sidebar > li {
+.sidebar > div {
   padding-bottom:5px;
+  padding-left: 5px;
 }
 
-.sidebar > li > a {
-  color: black;
-  font-size: 18px;
-  padding-bottom: 5px;
+.sidebar > div > a:hover {
+  text-decoration: none;
+  color: black !important;
 }
 
 .flexwrap {
@@ -68,4 +76,8 @@ body, html{
   display: flex; 
   flex: 1 0 auto; 
   flex-direction: column;
+}
+
+.scroll {
+  overflow: scroll;
 }

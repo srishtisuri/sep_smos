@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { signup } from '../actions/userActions';
 import { connect } from 'react-redux';
 import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { FaUserPlus } from 'react-icons/fa';
 
 class SignupPage extends Component {
     constructor(props) {
@@ -61,7 +62,7 @@ class SignupPage extends Component {
                         ></Input>
                     </FormGroup>
                     <FormGroup>
-                        <Button color="primary" type="submit">Sign Up</Button>
+                        <Button color="primary" type="submit" size="sm"><FaUserPlus/> Sign Up</Button>
                     </FormGroup>
                 </Form>
             </Col >

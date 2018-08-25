@@ -27,7 +27,7 @@ class ViewItemsPage extends Component {
 
     render() {
         return (
-            <Col className="viewitems contentBg pl-4" md="10">
+            <Col className="viewitems contentBg pl-4 scroll" md="10">
                 <h3>Items For Purchase</h3>
                 <hr />
                 <div className="text-center flexwrap">
