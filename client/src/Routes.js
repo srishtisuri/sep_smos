@@ -12,8 +12,28 @@ const Routes = () => {
             <Route exact path="/signup" component={SignupPage} />
             <Route path="/dashboard" component={DashboardPage} />
             <Route exact path="/viewItems" component={ViewItemsPage} />
+            <Route exact path="/cart" render={props=><div>Cart Component</div>} />
         </Switch>
     )
 }
 
 export default Routes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

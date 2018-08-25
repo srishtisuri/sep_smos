@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Container, Row, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
+import { Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
 import { login } from '../actions/userActions';
 
 class LoginPage extends Component {
@@ -18,9 +18,7 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div className="d-flex justify-content-center" style={{ height: '100%'}}>
-                <Container className="mt-5">
-                    <Row className="justify-content-center">
+            <Col className="d-flex justify-content-center mt-5">
                         <Form onSubmit={this.handleSubmit} style={{ width: "400px" }}>
                             <FormGroup>
                                 <Label><b>Staff or Student Number</b></Label>
@@ -60,9 +58,7 @@ class LoginPage extends Component {
                                 <Label>Don't have an account? <Link to={{ pathname: '/signup' }}>Sign up now</Link></Label>
                             </FormGroup>
                         </Form>
-                    </Row>
-                </Container>
-            </div>
+            </Col>
         );
     }
 }

@@ -8,6 +8,7 @@ import {
   NavbarBrand,
 } from 'reactstrap';
 import NavOptions from './NavOptions';
+import { Col } from 'reactstrap'
 
 
 class NavigationBar extends Component {
@@ -27,17 +28,16 @@ class NavigationBar extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
-      <div>
+      <Col>
         <Navbar color="dark" dark toggleable>
-          <NavbarBrand style={{color:"white", cursor:"pointer"}} onClick={()=>{this.props.history.push('/')}}>SMOS</NavbarBrand>
+          <NavbarBrand style={{ color: "white", cursor: "pointer" }} onClick={() => { this.props.history.push('/') }}>SMOS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <NavOptions />
           </Collapse>
         </Navbar>
-      </div>
+      </Col>
     );
   }
 }
