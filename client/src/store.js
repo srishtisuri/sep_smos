@@ -5,7 +5,8 @@ import rootReducer from './reducers';
 import {checkCurrUser} from './actions/userActions';
 
 
-const middleware = applyMiddleware(thunk, createLogger());
+//create logger to be put after thunk if required
+const middleware = applyMiddleware(thunk);
 
 const initialState = {};
 

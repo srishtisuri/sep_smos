@@ -4,7 +4,7 @@ import Routes from './Routes';
 import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { checkAuth } from './actions/userActions';
-import { Container, Row } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import Loading from './components/Loading';
 import SideBar from './components/SideBar';
 
@@ -15,20 +15,21 @@ class App extends Component {
 
   render() {
     const loader = (
-      <Container className="mt-5 d-flex justify-content-center" style={{ position: "absolute" }}>
+      <Col className="mt-5 d-flex justify-content-center">
         <Loading loading={this.props.loading} />
-      </Container>
+      </Col>
     )
+
     return (
       <BrowserRouter>
-        <div className="bg">
-          <NavigationBar />
-          {this.props.loading && loader}
-            {this.props.authenticated && !this.props.loading && <Row>
-              {this.props.authenticated && <SideBar />}
-              {!this.props.loading && <Routes />}
-            </Row> }
-            {!this.props.authenticated && !this.props.loading && <Routes />}
+        <div className="bg d-flex flex-column">
+          <Row className="d-flex w-100" noGutters style={{border:"1px solid blue"}}>
+            <NavigationBar />
+          </Row>
+          <Row className="d-flex w-100" noGutters style={{border:"1px solid red", flex:1}}>
+            {this.props.authenticated && <SideBar/>}
+            {!this.props.loading ? <Routes /> : loader }
+          </Row>
         </div>
       </BrowserRouter>
     );

@@ -7,9 +7,10 @@ import { getItems } from '../actions/itemActions';
 import { withRouter } from 'react-router-dom';
 
 class ViewItemsPage extends Component {
-
-    componentWillMount = () => {
-        if (!this.props.fetched) {
+    constructor(props) {
+      super(props)
+    
+      if (!this.props.fetched) {
         this.props.dispatch(getItems());
         }
     }
@@ -26,7 +27,7 @@ class ViewItemsPage extends Component {
 
     render() {
         return (
-            <Col className="viewitems contentBg" md="10">
+            <Col className="viewitems contentBg pl-4" md="10">
                 <h3>Items For Purchase</h3>
                 <hr />
                 <div className="text-center flexwrap">
@@ -38,13 +39,12 @@ class ViewItemsPage extends Component {
 }
 
 
-function mapStateToProps(state) {
-    return {
+const mapStateToProps = (state) => ({
         authenticated: state.user.authenticated,
         items: state.items.items,
         fetched: state.items.fetched
-    }
-}
+})
+
 
 export default connect(mapStateToProps)(ViewItemsPage);
 
