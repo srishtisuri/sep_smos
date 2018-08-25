@@ -6,7 +6,7 @@ export const getItems = () => dispatch => {
     .then(res => {
        if (res.data) {
             dispatch({
-               type: "GET_ITEMS",
+               type: "GET_ITEMS_SUCCESS",
                payload: res.data
             })
         }

@@ -14,10 +14,10 @@ html {
 
 .bg {
   height: 100%;
+  background-color: #e1e1e1;
 }
-
-.loginBg{
-  background-color: #e1e1e1
+.contentBg{
+  background-color: #ffffff;
 }
 
 .row {

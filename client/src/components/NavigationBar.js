@@ -27,6 +27,7 @@ class NavigationBar extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <Navbar color="dark" dark toggleable>

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col } from 'reactstrap';
-import ViewItems from './ViewItems';
-import { Switch, Route } from 'react-router-dom';
-import SideBar from './SideBar';
+import { Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
-
+    
     componentDidMount() {
         if (!this.props.authenticated) {
             this.props.history.push('/')
@@ -15,13 +13,10 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <Row className="row">
-                <SideBar/>
-                <Col className="text-center" md="9">
+            <Col className="text-center contentBg" md="10">
                 <h5>Content</h5>
                 {this.props.authenticated && <h3>Welcome, {this.props.user.userNumber}</h3>}
-                </Col>
-            </Row>
+            </Col>
         );
     }
 }
@@ -30,7 +25,7 @@ class Dashboard extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user.user,
-        authenticated: state.user.authenticated,
+        authenticated: state.user.authenticated
     }
 }
 
