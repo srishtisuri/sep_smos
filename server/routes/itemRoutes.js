@@ -19,11 +19,11 @@ router.get('/generateData/:amount', (req, res) => {
         var randPrice = prices[Math.floor(Math.random() * prices.length)];
         var randQuantity = quantities[Math.floor(Math.random() * quantities.length)];
         const newItem = new Item({
-            Name: randItem,
-            Type: randType,
-            Price: randPrice,
-            Quantity: randQuantity,
-            Description: randItem + " is one of the many items you can buy"
+            name: randItem,
+            type: randType,
+            price: randPrice,
+            quantity: randQuantity,
+            description: randItem + " is one of the many items you can buy"
         });
         newItem.save()
     };

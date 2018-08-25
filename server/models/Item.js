@@ -3,23 +3,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-    Name: {
+    name: {
         type: String,
         required: true
     },
-    Type: {
+    type: {
         type: String,
         required: false
     },
-    Price: {
+    price: {
         type: Number,
         required: false
     },
-    Quantity: {
+    quantity: {
         type: String,
         required: false
     },
-    Description: { 
+    description: { 
         type: String,
         required: false
     }
