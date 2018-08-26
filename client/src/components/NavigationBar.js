@@ -33,7 +33,7 @@ class NavigationBar extends Component {
     return (
       <Col>
         <Navbar color="dark shadow" toggleable>
-          <NavbarBrand onClick={() => this.props.dispatch(redirect(this.props.history, '/'))}><FaHome />  SMOS</NavbarBrand>
+          <NavbarBrand onClick={() => this.props.dispatch(redirect(this.props.history, '/'))}><FaHome className="mr-1" style={{fontSize:'16px'}}/>  smos</NavbarBrand>
           {/* <NavbarToggler onClick={this.toggle} /> */}
           {/* <Collapse isOpen={this.state.isOpen} navbar> */}
           <NavOptions />

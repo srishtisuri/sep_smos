@@ -1,6 +1,2 @@
-Icon sizes,
-Mobile Responsiveness - Sidebar
 Item Pictures
-media queries -> item to 50% -> 100%
-remove unnecessary css
-
+padding under item for purchase title
