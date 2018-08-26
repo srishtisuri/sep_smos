@@ -11,24 +11,33 @@ import SideBar from './components/SideBar';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(checkAuth());
+    this.checkMobi();
+    window.addEventListener('resize', this.checkMobi);
+  }
+
+  checkMobi = () => {
+    if(window.innerWidth<=1010){
+      this.props.dispatch({type:"MOBI_TRUE"})
+    } else {
+      this.props.dispatch({type:"MOBI_FALSE"})
+    }
   }
 
   render() {
     const loader = (
-      <Col className="mt-5 d-flex justify-content-center">
-        <Loading loading={this.props.loading} />
+      <Col className="d-flex justify-content-center align-items-center">
+        <Loading loading={this.props.loading || this.props.redirecting} />
       </Col>
     )
-
     return (
       <BrowserRouter>
-        <div className="bg d-flex flex-column">
-          <Row className="d-flex w-100 sticky-top" noGutters>
+        <div className="app d-flex flex-column" style={{backgroundColor:this.props.authenticated?"#ffffff":"#e1e1e1"}}>
+          {this.props.authenticated && <Row className="d-flex w-100 sticky-top" noGutters>
             <NavigationBar />
-          </Row>
-          <Row className="d-flex w-100" noGutters style={{flex:1}}>
+          </Row>}
+          <Row className="d-flex" noGutters style={{flex:1}}>
             {this.props.authenticated && <SideBar/>}
-            {!this.props.loading ? <Routes /> : loader }
+            {!this.props.loading && !this.props.redirecting ? <Routes /> : loader }
           </Row>
         </div>
       </BrowserRouter>
@@ -38,7 +47,8 @@ class App extends Component {
 // className="d-flex justify-content-center align-items-center"
 const mapStateToProps = (state) => ({
   loading: state.loader.loading,
-  authenticated: state.user.authenticated
+  authenticated: state.user.authenticated,
+  redirecting: state.redirect.redirecting
 })
 
 export default connect(mapStateToProps)(App);

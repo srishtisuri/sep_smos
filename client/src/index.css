@@ -1,20 +1,23 @@
 #root {
   height: 100%;
 }
-
+* {
+  font-weight: 300 !important
+}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+
 }
 body, html{
   height: 100%;
 }
 
-.bg {
+.app {
   height: 100%;
-  background-color: #e1e1e1;
 }
+
 .contentBg{
   background-color: #ffffff;
 }
@@ -35,13 +38,14 @@ body, html{
 }
 
 .sidebar > div {
-  padding-bottom:5px;
-  padding-left: 5px;
+  padding: 0px 15px 15px 15px;
+  font-size: 14px;
 }
 
 .sidebar > div > a:hover {
   text-decoration: none;
   color: black !important;
+  cursor: pointer;
 }
 
 .flexwrap {
@@ -51,6 +55,14 @@ body, html{
 
 .viewitems {
   padding-top: 15px;
+}
+
+.mobiBar{
+  text-align: center;
+  font-size: 14px;
+}
+.mobiBar > div  {
+  padding: 0px 5px 15px 5px;
 }
 
 .item {
@@ -79,5 +91,9 @@ body, html{
 }
 
 .scroll {
-  overflow: scroll;
+  overflow: auto;
+}
+
+.navBtn {
+  padding-left: 10px;
 }

@@ -27,11 +27,11 @@ class ViewItemsPage extends Component {
 
     render() {
         return (
-            <Col className="viewitems contentBg pl-4 scroll" md="10">
+            <Col className="viewitems contentBg pl-4 pr-4 scroll" xs={!this.props.mobi?"10":"11"}>
                 <h3>Items For Purchase</h3>
                 <hr />
-                <div className="text-center flexwrap">
-                    {this.props.items.map(item => <Item key={item._id} item={item} />)}
+                <div className="flexwrap justify-content-center">
+                    {this.props.items.map(item => <Item key={item._id} item={item} mobi={this.props.mobi} />)}
                 </div>
             </Col>
         );
@@ -42,7 +42,8 @@ class ViewItemsPage extends Component {
 const mapStateToProps = (state) => ({
         authenticated: state.user.authenticated,
         items: state.items.items,
-        fetched: state.items.fetched
+        fetched: state.items.fetched,
+        mobi: state.mobi.mobi
 })
 
 

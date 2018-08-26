@@ -10,6 +10,8 @@ import {
 import NavOptions from './NavOptions';
 import { Col } from 'reactstrap';
 import { FaHome } from 'react-icons/fa';
+import { redirect } from '../actions/redirectActions';
+
 
 class NavigationBar extends Component {
   constructor(props) {
@@ -31,11 +33,11 @@ class NavigationBar extends Component {
     return (
       <Col>
         <Navbar color="dark shadow" toggleable>
-          <NavbarBrand onClick={() => { this.props.history.push('/') }}><FaHome/>  SMOS</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <NavOptions />
-          </Collapse>
+          <NavbarBrand onClick={() => this.props.dispatch(redirect(this.props.history, '/'))}><FaHome />  SMOS</NavbarBrand>
+          {/* <NavbarToggler onClick={this.toggle} /> */}
+          {/* <Collapse isOpen={this.state.isOpen} navbar> */}
+          <NavOptions />
+          {/* </Collapse> */}
         </Navbar>
       </Col>
     );

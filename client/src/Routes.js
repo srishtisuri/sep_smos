@@ -4,6 +4,10 @@ import LoginPage from './containers/LoginPage';
 import SignupPage from './containers/SignupPage';
 import DashboardPage from './containers/DashboardPage';
 import ViewItemsPage from './containers/ViewItemsPage';
+import CartPage from './containers/CartPage';
+import TestPage from './containers/TestPage';
+import PurchaseHistoryPage from './containers/PurchaseHistoryPage';
+import NotFoundPage from './containers/NotFoundPage';
 
 const Routes = () => {
     return (
@@ -12,7 +16,10 @@ const Routes = () => {
             <Route exact path="/signup" component={SignupPage} />
             <Route path="/dashboard" component={DashboardPage} />
             <Route exact path="/viewItems" component={ViewItemsPage} />
-            <Route exact path="/cart" render={props=><div>Cart Component</div>} />
+            <Route exact path="/cart" component={CartPage} />
+            <Route exact path="/purchaseHistory" component={PurchaseHistoryPage} />
+            <Route exact path="/testContainer" component={TestPage} />
+            <Route component={NotFoundPage} />
         </Switch>
     )
 }

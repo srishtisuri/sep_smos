@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Col } from 'reactstrap';
 
 
-class Dashboard extends Component {
+class PurchaseHistoryPage extends Component {
 
     componentDidMount() {
         if (!this.props.authenticated) {
@@ -14,9 +14,8 @@ class Dashboard extends Component {
     render() {
         return (
             <Col className="contentBg pl-4 pr-4 pt-3 align-items-center" >
-                <h3>Dashboard</h3>
+                <h3>Purchase History</h3>
                 <hr />
-                {this.props.authenticated && <h3>Welcome, {this.props.user.userNumber}</h3>}
             </Col>
         );
     }
@@ -25,11 +24,9 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user.user,
         authenticated: state.user.authenticated,
-        mobi: state.mobi.mobi
     }
 }
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(PurchaseHistoryPage);
 
