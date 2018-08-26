@@ -7,6 +7,9 @@ export default (state = initialState, action) => {
         case "GET_ITEMS_SUCCESS": return{
             ...state,
             items: action.payload,
+        }
+        case "GET_ITEMS_FETCHED": return{
+            ...state,
             fetched: true
         }
         case "CLEAR_ITEMS": return initialState;

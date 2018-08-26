@@ -12,6 +12,7 @@ export const getItems = () => dispatch => {
         }
     }).then(() => {
         setTimeout  (()=>{
+            dispatch({ type: "GET_ITEMS_FETCHED" })    
             dispatch({ type: "LOADING_FIN" })    
         }, 250)
     })

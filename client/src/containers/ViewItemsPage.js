@@ -29,14 +29,14 @@ class ViewItemsPage extends Component {
 
     generateItems = (amount) => {
         axios.get('/api/items/generateData/'+amount)
-        .then(this.props.dispatch(getItems()))
+        .then(()=>this.props.dispatch(getItems()))
         .catch(err=>console.log(err))
 
     }
 
     removeItems = () => {
         axios.get('/api/items/deleteData/')
-        .then(this.props.dispatch(getItems()))
+        .then(()=>this.props.dispatch(getItems()))
         .catch(err=>console.log(err))
 
     }
@@ -53,7 +53,7 @@ class ViewItemsPage extends Component {
                 </div>
                 <hr />
                 <div className="flexwrap justify-content-center">
-                    {this.props.items.map(item => <Item key={item._id} item={item} mobi={this.props.mobi} />)}
+                    {this.props.fetched && this.props.items.map(item => <Item key={item._id} item={item} mobi={this.props.mobi} />)}
                 </div>
             </Col>
         );
