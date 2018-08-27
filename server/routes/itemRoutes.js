@@ -8,6 +8,12 @@ router.get('/', (req, res) => {
         .catch(err => console.log(err));
 })
 
+router.get('/getItem/:id', (req, res) => {
+    Item.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(err => console.log(err));
+})
+
 router.get('/generateData/:amount', (req, res) => {
     let types = ['Stapler', 'Pencil', 'Pen', 'Sharpener', 'Eraser', 'Books', 'Notepad', 'Whiteboard Marker', 'Whiteboard']
     let colors = ['Black', 'Red', 'Blue', 'Yellow', 'Green', 'Orange', 'Rainbow', 'Pink', 'Purple']
