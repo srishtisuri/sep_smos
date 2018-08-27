@@ -28,7 +28,7 @@ class Item extends Component {
                     <CardTitle>{this.props.item.name}</CardTitle>
                     <CardSubtitle>${this.props.item.price}</CardSubtitle>
                     <CardText>{this.props.item.description}</CardText>
-                    <Button>View</Button>
+                    <Button onClick={this.toggle}>View</Button>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                         <ModalBody>

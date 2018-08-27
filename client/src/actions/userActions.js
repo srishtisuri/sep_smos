@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { pushErr } from './errorActions';
+import { pushMessage } from './messageActions';
+
 
 export const login = (userNumber, password, history) => dispatch => {
     dispatch({ type: "LOADING_START" })
@@ -26,6 +28,8 @@ export const login = (userNumber, password, history) => dispatch => {
         setTimeout  (()=>{
             dispatch({ type: "LOADING_FIN" })    
         }, 250)
+        dispatch(pushMessage("You have successfully logged in!"))
+
     })
         .catch(err => console.log(err))
 }
@@ -45,6 +49,7 @@ export const logout = (history) => dispatch => {
             setTimeout(()=>{
                 dispatch({ type: "LOADING_FIN" })    
             }, 250)
+            dispatch(pushMessage("You have successfully logged out!"))
         })
         .catch(err => console.log(err))
 }

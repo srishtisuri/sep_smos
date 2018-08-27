@@ -14,7 +14,7 @@ export const getItems = () => dispatch => {
         setTimeout  (()=>{
             dispatch({ type: "GET_ITEMS_FETCHED" })    
             dispatch({ type: "LOADING_FIN" })    
-        }, 250)
+        }, 0)
     })
     .catch(err => console.log(err))
 };
