@@ -7,10 +7,9 @@ import { notify } from '../actions/notificationActions';
 class PurchaseHistoryPage extends Component {
 
     componentDidMount() {
-        if (!this.props.authenticated) {
+        if (!this.props.authenticated && !this.props.loading) {
             this.props.history.push('/')
             this.props.dispatch(notify("danger", "You are not authenticated!"))
-
         }
     }
 
@@ -28,6 +27,7 @@ class PurchaseHistoryPage extends Component {
 function mapStateToProps(state) {
     return {
         authenticated: state.user.authenticated,
+        loading: state.loader.loading
     }
 }
 

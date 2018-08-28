@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Col } from 'reactstrap';
-import SideBar from '../components/SideBar';
 import Item from '../components/Item';
 import { getItems } from '../actions/itemActions';
 import { notify } from '../actions/notificationActions';
@@ -19,11 +18,10 @@ class ViewItemsPage extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.authenticated) {
-            this.props.history.push('/')
-            this.props.dispatch(notify("danger", "You are not authenticated!"))
-
-        }
+        if(!this.props.authenticated && !this.props.loading){
+                this.props.history.push('/')
+                this.props.dispatch(notify("danger", "You are not authenticated!"))
+        } 
     }
 
     componentWillUnmount() {
@@ -32,8 +30,8 @@ class ViewItemsPage extends Component {
 
     generateItems = (amount) => {
         axios.get('/api/items/generateData/'+amount)
-        .then(()=>this.props.dispatch(notify("success","Items successfully generated!")))
         .then(()=>this.props.dispatch(getItems()))
+        .then(()=>this.props.dispatch(notify("success","Items successfully generated!")))
         .catch(err=>console.log(err))
 
     }
@@ -72,6 +70,7 @@ class ViewItemsPage extends Component {
 
 const mapStateToProps = (state) => ({
     authenticated: state.user.authenticated,
+    loading: state.loader.loading,
     items: state.items.items,
     fetched: state.items.fetched,
     mobi: state.mobi.mobi

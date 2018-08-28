@@ -7,7 +7,7 @@ import { notify } from '../actions/notificationActions';
 class Dashboard extends Component {
 
     componentDidMount() {
-        if (!this.props.authenticated) {
+        if (!this.props.authenticated && !this.props.loading) {
             this.props.history.push('/')
             this.props.dispatch(notify("danger", "You are not authenticated!"))
         }
@@ -29,7 +29,7 @@ function mapStateToProps(state) {
     return {
         user: state.user.user,
         authenticated: state.user.authenticated,
-        mobi: state.mobi.mobi
+        loading: state.loader.loading
     }
 }
 

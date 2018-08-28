@@ -15,11 +15,11 @@ class App extends Component {
     this.state = {
       visible: this.props.notification ? true : false
     }
+    this.props.dispatch(checkAuth());
+    this.checkMobi();
   }
 
   componentDidMount() {
-    this.props.dispatch(checkAuth());
-    this.checkMobi();
     window.addEventListener('resize', this.checkMobi);
   }
 
@@ -43,20 +43,10 @@ class App extends Component {
         {this.props.notification}
         {/* </p> */}
       </div>
-    // return (
-    //   // <Row className="text-center" noGutters>
-    //   //   <Col style={{height:'50px'}}>
-    //   //     <Alert style={{height:'100%'}}isOpen={this.state.visible} color={this.props.notificationColor}>
-    //   //       {this.props.notification}
-    //   //     </Alert>
-    //   //   </Col>
-    //   // </Row>
-    // )
     )
   }
 
   render() {
-    console.log(this.props.notification, this.props.notificationColor);
     const loader = (
       <Col className="d-flex justify-content-center align-items-center">
         <Loading loading={this.props.loading || this.props.redirecting} />

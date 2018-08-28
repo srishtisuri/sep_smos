@@ -13,5 +13,6 @@ function getNotifColor(notificationColor) {
     switch (notificationColor) {
         case 'success': return '#99ff99'
         case 'danger': return '#db5e5e'
+        default: return notificationColor;
     }
 }

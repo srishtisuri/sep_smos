@@ -14,11 +14,11 @@ const Routes = () => {
         <Switch>
             <Route exact path="/" component={LoginPage} />
             <Route exact path="/signup" component={SignupPage} />
-            <Route path="/dashboard" component={DashboardPage} />
             <Route exact path="/viewItems" component={ViewItemsPage} />
             <Route exact path="/cart" component={CartPage} />
             <Route exact path="/purchaseHistory" component={PurchaseHistoryPage} />
             <Route exact path="/testContainer" component={TestPage} />
+            <Route path="/dashboard" component={DashboardPage} />
             <Route component={NotFoundPage} />
         </Switch>
     )

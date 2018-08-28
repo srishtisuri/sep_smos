@@ -18,18 +18,19 @@ export const login = (userNumber, password, history) => dispatch => {
                 payload: res.data.user
             })
             history.push('/dashboard/' + res.data.user.userNumber)
+            dispatch(notify("success", "You have successfully logged in!"))
         } else {
-            dispatch(pushErr({
-                type: "AUTH_FAIL",
-                payload: "That account doesn't exist!"
-            }))
+            // dispatch(pushErr({
+            //     type: "AUTH_FAIL",
+            //     payload: "That account doesn't exist!"
+            // }))
+            dispatch(notify("danger", "Incorrect login details!"))
+
         }
     }).then(() => {
         setTimeout  (()=>{
             dispatch({ type: "LOADING_FIN" })    
         }, 250)
-        dispatch(notify("success", "You have successfully logged in!"))
-
     })
         .catch(err =>{
             setTimeout  (()=>{
@@ -70,17 +71,17 @@ export const checkAuth = () => dispatch => {
         type: "CLEAR_ERRORS",
     }))
     axios.get('/api/users/currentUser')
-        .then(res => {
-            if (res.data.exists) {
-                dispatch({
-                    type: "AUTH_SUCCESS",
-                    payload: res.data.user
-                })
-                dispatch(notify("success", "Authentication successful!"))
-            } else {
-                dispatch({
-                    type: "NO_EXISTING_AUTH"
-                })
+    .then(res => {
+        if (res.data.exists) {
+            dispatch({
+                type: "AUTH_SUCCESS",
+                payload: res.data.user
+            })
+            dispatch(notify("success", "Authentication successful!"))
+        } else {
+            dispatch({
+                type: "NO_EXISTING_AUTH"
+            })
             }
         })
         .then(() => {
