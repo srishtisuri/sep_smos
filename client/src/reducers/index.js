@@ -5,7 +5,7 @@ import loader from './loaderReducer';
 import items from './itemReducer';
 import mobi from './mobiReducer';
 import redirect from './redirectReducer';
-import message from './messageReducer';
+import notification from './notificationReducer';
 
 export default combineReducers({
     user: user,
@@ -14,5 +14,5 @@ export default combineReducers({
     items: items,
     mobi: mobi,
     redirect: redirect,
-    message: message
+    notification: notification
 })

@@ -11,12 +11,12 @@ import SideBar from './components/SideBar';
 class App extends Component {
   constructor(props) {
     super(props)
-  
+
     this.state = {
-       visible:this.props.message?true:false
-      }
+      visible: this.props.notification ? true : false
+    }
   }
-  
+
   componentDidMount() {
     this.props.dispatch(checkAuth());
     this.checkMobi();
@@ -24,9 +24,9 @@ class App extends Component {
   }
 
   componentWillReceiveProps = (prevProps, prevState) => {
-    this.setState({visible:this.props.message?true:false})
+    this.setState({ visible: this.props.notification ? true : false })
   }
-  
+
 
   checkMobi = () => {
     if (window.innerWidth <= 1010) {
@@ -38,29 +38,25 @@ class App extends Component {
 
   renderMsg = () => {
     return (
-      <Row className="text-center d-flex w-100 sticky-top" noGutters>
-        <Col>
-          <Alert isOpen={this.state.visible} color="success">
-            {this.props.message}
-          </Alert>
-        </Col>
-      </Row>
-    )
-  }
-
-  renderMsg = () => {
-    return (
-      <Row className="text-center" noGutters>
-        <Col style={{height:'50px'}}>
-          <Alert style={{height:'100%'}}isOpen={this.state.visible} color="success">
-            {this.props.message}
-          </Alert>
-        </Col>
-      </Row>
+      <div className={"text-center text-dark "} style={{fontSize:'14px', backgroundColor:this.props.notificationColor}}>
+        {/* <p style={{color:'white', padding:0, margin:0}}> */}
+        {this.props.notification}
+        {/* </p> */}
+      </div>
+    // return (
+    //   // <Row className="text-center" noGutters>
+    //   //   <Col style={{height:'50px'}}>
+    //   //     <Alert style={{height:'100%'}}isOpen={this.state.visible} color={this.props.notificationColor}>
+    //   //       {this.props.notification}
+    //   //     </Alert>
+    //   //   </Col>
+    //   // </Row>
+    // )
     )
   }
 
   render() {
+    console.log(this.props.notification, this.props.notificationColor);
     const loader = (
       <Col className="d-flex justify-content-center align-items-center">
         <Loading loading={this.props.loading || this.props.redirecting} />
@@ -72,7 +68,7 @@ class App extends Component {
           {this.props.authenticated && <Row className="d-flex w-100 sticky-top" noGutters>
             <NavigationBar />
           </Row>}
-          {this.props.message && this.renderMsg()}
+          {this.props.notification && this.renderMsg()}
           <Row className="d-flex" noGutters style={{ flex: 1 }}>
             {this.props.authenticated && <SideBar />}
             {!this.props.loading && !this.props.redirecting ? <Routes /> : loader}
@@ -87,7 +83,8 @@ const mapStateToProps = (state) => ({
   loading: state.loader.loading,
   authenticated: state.user.authenticated,
   redirecting: state.redirect.redirecting,
-  message: state.message.message
+  notification: state.notification.notification,
+  notificationColor: state.notification.notificationColor
 })
 
 export default connect(mapStateToProps)(App);

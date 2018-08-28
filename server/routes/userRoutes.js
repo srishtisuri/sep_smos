@@ -44,17 +44,16 @@ router.post('/login', function(req, res, next){
     // res.send("Hi");
     passport.authenticate('local', function(err, user, info){
 
-        if (err) { return next(err); }
+        if (err) { return res.json(err); }
         if (!user) { return res.json({success:false}); }
         req.logIn(user, function(err) {
-          if (err) { return next(err); }
+          if (err) { return res.json(err); }
           return res.json({
             success:true,
             user: req.user
           });
         });
     })(req, res, next)
-    // console.log(req.user)
 })
 
 router.get('/logout', (req, res) => {

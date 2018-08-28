@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { pushErr } from './errorActions';
-import { pushMessage } from './messageActions';
+import { notify } from './notificationActions';
 
 
 export const login = (userNumber, password, history) => dispatch => {
@@ -28,10 +28,15 @@ export const login = (userNumber, password, history) => dispatch => {
         setTimeout  (()=>{
             dispatch({ type: "LOADING_FIN" })    
         }, 250)
-        dispatch(pushMessage("You have successfully logged in!"))
+        dispatch(notify("success", "You have successfully logged in!"))
 
     })
-        .catch(err => console.log(err))
+        .catch(err =>{
+            setTimeout  (()=>{
+                dispatch({ type: "LOADING_FIN" })    
+            }, 250)
+            dispatch(notify("danger", "An error occurred!"))
+        })
 }
 
 export const logout = (history) => dispatch => {
@@ -49,9 +54,14 @@ export const logout = (history) => dispatch => {
             setTimeout(()=>{
                 dispatch({ type: "LOADING_FIN" })    
             }, 250)
-            dispatch(pushMessage("You have successfully logged out!"))
+            dispatch(notify("success", "You have successfully logged out!"))
         })
-        .catch(err => console.log(err))
+        .catch(err =>{
+            setTimeout  (()=>{
+                dispatch({ type: "LOADING_FIN" })    
+            }, 250)
+            dispatch(notify("danger", "An error occurred!"))
+        })
 }
 
 export const checkAuth = () => dispatch => {
@@ -66,6 +76,7 @@ export const checkAuth = () => dispatch => {
                     type: "AUTH_SUCCESS",
                     payload: res.data.user
                 })
+                dispatch(notify("success", "Authentication successful!"))
             } else {
                 dispatch({
                     type: "NO_EXISTING_AUTH"
@@ -95,11 +106,14 @@ export const signup = (userNumber, password, history) => dispatch => {
                     type: "SIGNUP_SUCCESS",
                 }))
                 history.push('/')
+                this.props.dispatch(notify("success", "You have successfully signed up!"))
             } else {
                 dispatch(pushErr({
                     type: "SIGNUP_FAIL",
                     payload: "Something Went Wrong"
                 }))
+                this.props.dispatch(notify("danger", "An error occured while signing up!"))
+
             }
         })
         .then(() => {

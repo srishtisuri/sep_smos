@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'reactstrap';
+import { notify } from '../actions/notificationActions';
 
 
 class PurchaseHistoryPage extends Component {
@@ -8,6 +9,8 @@ class PurchaseHistoryPage extends Component {
     componentDidMount() {
         if (!this.props.authenticated) {
             this.props.history.push('/')
+            this.props.dispatch(notify("danger", "You are not authenticated!"))
+
         }
     }
 

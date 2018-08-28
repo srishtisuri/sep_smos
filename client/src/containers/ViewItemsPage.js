@@ -4,6 +4,7 @@ import { Button, Col } from 'reactstrap';
 import SideBar from '../components/SideBar';
 import Item from '../components/Item';
 import { getItems } from '../actions/itemActions';
+import { notify } from '../actions/notificationActions';
 import { FaPlus } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
@@ -20,6 +21,8 @@ class ViewItemsPage extends Component {
     componentDidMount() {
         if (!this.props.authenticated) {
             this.props.history.push('/')
+            this.props.dispatch(notify("danger", "You are not authenticated!"))
+
         }
     }
 
@@ -29,15 +32,21 @@ class ViewItemsPage extends Component {
 
     generateItems = (amount) => {
         axios.get('/api/items/generateData/'+amount)
+        .then(()=>this.props.dispatch(notify("success","Items successfully generated!")))
         .then(()=>this.props.dispatch(getItems()))
         .catch(err=>console.log(err))
 
     }
 
     removeItems = () => {
-        axios.get('/api/items/deleteData/')
-        .then(()=>this.props.dispatch(getItems()))
-        .catch(err=>console.log(err))
+        if(this.props.items.length!=0){
+            axios.get('/api/items/deleteData/')
+            .then(()=>this.props.dispatch(notify("success", "Items successfully deleted!")))
+            .then(()=>this.props.dispatch(getItems()))
+            .catch(err=>console.log(err))
+        } else {
+            this.props.dispatch(notify("danger", "There are no items to delete!"))
+        }
 
     }
 

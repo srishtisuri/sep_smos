@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'reactstrap';
+import { notify } from '../actions/notificationActions';
 
 
 class CartPage extends Component {
@@ -8,6 +9,7 @@ class CartPage extends Component {
     componentDidMount() {
         if (!this.props.authenticated) {
             this.props.history.push('/')
+            this.props.dispatch(notify("danger", "You are not authenticated!"))
         }
     }
 
