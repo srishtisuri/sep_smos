@@ -18,6 +18,7 @@ class CartPage extends Component {
             <Col className="contentBg pl-4 pr-4 pt-3 align-items-center" >
                 <h3>My Cart</h3>
                 <hr />
+                
             </Col>
         );
     }
