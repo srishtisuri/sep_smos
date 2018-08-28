@@ -107,13 +107,13 @@ export const signup = (userNumber, password, history) => dispatch => {
                     type: "SIGNUP_SUCCESS",
                 }))
                 history.push('/')
-                this.props.dispatch(notify("success", "You have successfully signed up!"))
+                dispatch(notify("success", "You have successfully signed up!"))
             } else {
                 dispatch(pushErr({
                     type: "SIGNUP_FAIL",
                     payload: "Something Went Wrong"
                 }))
-                this.props.dispatch(notify("danger", "An error occured while signing up!"))
+                dispatch(notify("danger", "An error occured while signing up!"))
 
             }
         })
