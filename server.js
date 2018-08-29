@@ -9,6 +9,9 @@ const passport = require('passport');
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Serve static react files
+app.use(express.static(path.join(__dirname+'client/build')));
+
 // Set up database connection
 const db = require('./config/key').url;
 mongoose.connect(db, { useNewUrlParser: true })
@@ -32,6 +35,13 @@ app.use(passport.session());
 // Set up routes
 app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
+
+// Production
+if (process.env.NODE_ENV === 'production') {
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname+'/client/build/index.html'));
+      });
+}
 
 // Initialise the application
 app.listen(port, () => {
