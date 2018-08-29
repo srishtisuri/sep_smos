@@ -2,7 +2,7 @@
   "name": "sep_smos",
   "version": "1.0.0",
   "description": "Stationary Management and Ordering System Built with the MERN Stack",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "install-dependencies": "npm install && npm run install-server && npm run install-client",
     "install-client": "cd client && npm install",
