@@ -25,6 +25,33 @@ router.get('/currentUser', (req, res) => {
     }
 })
 
+router.post('/currentUser/addToCart', (req, res) => {
+    console.log('adding item to to user cart');
+
+    function addToCart (user, itemId) {
+        console.log(user.cart)
+        console.log(itemId)
+
+        function saveAndPush (user, item){
+            user.cart.push(item);
+            user.save()
+                .then(data => res.json(data))
+                .catch(err => console.log(err));
+        }
+
+        Item.findById(itemId)
+            .then(data => saveAndPush(user, data))
+                .catch(err => console.log(err))
+
+        
+    }
+
+    User.findById(req.user._id)
+        .then(data => addToCart(data, req.body.itemId))
+        .catch(err => console.log(err));        
+
+})
+
 router.post('/signup', (req, res) => {
     const newUser = new User({
         userNumber: req.body.userNumber,
