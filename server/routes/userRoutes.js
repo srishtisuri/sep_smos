@@ -35,8 +35,8 @@ router.post('/currentUser/addToCart', (req, res) => {
         function saveAndPush (user, item){
             user.cart.push(item);
             user.save()
-                .then(data => res.json(data))
-                .catch(err => console.log(err));
+                .then(data => res.json({success: true, data: data}))
+                .catch(err => res.json({success: false, data: err}));
         }
 
         Item.findById(itemId)
