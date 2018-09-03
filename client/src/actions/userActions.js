@@ -125,8 +125,8 @@ export const signup = (userNumber, password, history) => dispatch => {
         .catch(err => console.log(err))
 };
 
-export const addToCart = (id) => dispatch => {
-    dispatch({ type: "LOADING_START" })
+export const addToCart = (itemId) => dispatch => {
+    // dispatch({ type: "LOADING_START" })
     dispatch(pushErr({
         type: "CLEAR_ERRORS",
     }))
@@ -150,9 +150,9 @@ export const addToCart = (id) => dispatch => {
             }
         })
         .then(() => {
-            setTimeout(()=>{
-                dispatch({ type: "LOADING_FIN" })    
-            }, 250)
+            // setTimeout(()=>{
+            //     dispatch({ type: "LOADING_FIN" })    
+            // }, 250)
         })
         .catch(err => console.log(err))
 };

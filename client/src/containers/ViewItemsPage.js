@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Col } from 'reactstrap';
 import Item from '../components/Item';
 import { getItems } from '../actions/itemActions';
+import { addToCart } from '../actions/userActions';
 import { notify } from '../actions/notificationActions';
 import { FaPlus } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
@@ -48,6 +49,10 @@ class ViewItemsPage extends Component {
 
     }
 
+    addItemToCart = (itemId) => {
+        this.props.dispatch(addToCart(itemId))
+    }
+
     render() {
         return (
             <Col className="viewitems contentBg pl-4 pr-4 scroll" xs={!this.props.mobi ? "10" : "11"}>
@@ -60,7 +65,7 @@ class ViewItemsPage extends Component {
                 </div>
                 <hr />
                 <div className="flexwrap justify-content-center">
-                    {this.props.fetched && this.props.items.map(item => <Item key={item._id} item={item} mobi={this.props.mobi} />)}
+                    {this.props.fetched && this.props.items.map(item => <Item addItemToCart={this.addItemToCart} key={item._id} item={item} mobi={this.props.mobi} />)}
                 </div>
             </Col>
         );
