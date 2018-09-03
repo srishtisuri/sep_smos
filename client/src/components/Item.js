@@ -22,8 +22,7 @@ class Item extends Component {
     }
 
     addToCart() {
-        console.log(this.props.item.name + ' add to cart clicked' );
-        this.toggle();
+        this.props.dispatch(addToCart(this.props.item._id))
     }
 
     render() {
