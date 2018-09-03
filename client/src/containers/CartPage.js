@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'reactstrap';
 import { notify } from '../actions/notificationActions';
-import Item from '../components/Item';
+import CartItem from '../components/CartItem';
 
 
 class CartPage extends Component {
@@ -20,7 +20,7 @@ class CartPage extends Component {
                 <h3>My Cart</h3>
                 <hr />
                 <div className="flexwrap justify-content-center">
-                    {this.props.authenticated && this.props.user.cart.map(item => <Item key={item._id} item={item} mobi={this.props.mobi} />)}
+                    {this.props.authenticated && this.props.user.cart.map(item => item?<CartItem key={item._id} item={item} mobi={this.props.mobi} />:null)}
                 </div>
                 
             </Col>

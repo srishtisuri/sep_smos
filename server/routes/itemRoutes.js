@@ -36,7 +36,7 @@ router.get('/generateData/:amount', (req, res) => {
     res.json({ success: true })
 })
 
-router.get('/deleteData', (req, res) => {
+router.delete('/deleteData', (req, res) => {
     Item.collection.drop()
         .then(() => {
             res.send({ success: true })

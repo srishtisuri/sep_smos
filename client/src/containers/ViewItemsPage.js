@@ -39,7 +39,7 @@ class ViewItemsPage extends Component {
 
     removeItems = () => {
         if(this.props.items.length!=0){
-            axios.get('/api/items/deleteData/')
+            axios.delete('/api/items/deleteData/')
             .then(()=>this.props.dispatch(notify("success", "Items successfully deleted!")))
             .then(()=>this.props.dispatch(getItems()))
             .catch(err=>console.log(err))
