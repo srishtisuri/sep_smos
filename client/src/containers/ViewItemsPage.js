@@ -73,7 +73,8 @@ const mapStateToProps = (state) => ({
     loading: state.loader.loading,
     items: state.items.items,
     fetched: state.items.fetched,
-    mobi: state.mobi.mobi
+    mobi: state.mobi.mobi,
+    searchParam: state.search.searchParam
 })
 
 

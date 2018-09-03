@@ -8,6 +8,7 @@ import {
   NavbarBrand,
 } from 'reactstrap';
 import NavOptions from './NavOptions';
+import SearchBar from './SearchBar';
 import { Col } from 'reactstrap';
 import { FaHome } from 'react-icons/fa';
 import { redirect } from '../actions/redirectActions';
@@ -36,7 +37,8 @@ class NavigationBar extends Component {
           <NavbarBrand onClick={() => this.props.dispatch(redirect(this.props.history, '/'))}><FaHome className="mr-1" style={{fontSize:'16px'}}/>  smos</NavbarBrand>
           {/* <NavbarToggler onClick={this.toggle} /> */}
           {/* <Collapse isOpen={this.state.isOpen} navbar> */}
-          <NavOptions />
+            <SearchBar/>
+          <NavOptions />     
           {/* </Collapse> */}
         </Navbar>
       </Col>

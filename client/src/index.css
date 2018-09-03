@@ -97,3 +97,8 @@ body, html{
 .navBtn {
   padding-left: 10px;
 }
+
+.searchIcon {
+  font-size:20px;
+  padding-bottom:2px;
+}

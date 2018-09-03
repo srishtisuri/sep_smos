@@ -6,6 +6,7 @@ import items from './itemReducer';
 import mobi from './mobiReducer';
 import redirect from './redirectReducer';
 import notification from './notificationReducer';
+import search from './searchReducer';
 
 export default combineReducers({
     user: user,
@@ -14,5 +15,6 @@ export default combineReducers({
     items: items,
     mobi: mobi,
     redirect: redirect,
-    notification: notification
+    notification: notification,
+    search: search
 })
