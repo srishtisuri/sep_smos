@@ -30,8 +30,6 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Setup static files
-app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Set up routes
 app.use('/api/users', userRoutes);
@@ -39,9 +37,12 @@ app.use('/api/items', itemRoutes);
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
+    // Setup static files
+    app.use(express.static(path.join(__dirname, 'client/build')));
+    
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname+'/client/build/index.html'));
-      });
+        res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    });
 }
 
 // Initialise the application
