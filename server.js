@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 // Set up database connection
 const db = require('./config/key').url;
 mongoose.connect(db, { useNewUrlParser: true })
-    .then(() => { console.log("MongoDB successfully connected...") })
+    .then(() => { console.log("MongoDB successfully connected...");})
     .catch(err => console.log(err));
 
 // Express session initialize
@@ -39,7 +39,7 @@ app.use('/api/items', itemRoutes);
 if (process.env.NODE_ENV === 'production') {
     // Setup static files
     app.use(express.static(path.join(__dirname, 'client/build')));
-    
+
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname + '/client/build/index.html'));
     });
