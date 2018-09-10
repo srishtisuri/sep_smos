@@ -1,5 +1,1 @@
 language: node_js
-
-install:
-  - npm run install-dependencies
-  - cd client && npm run build
