@@ -4,7 +4,7 @@
   "description": "Stationary Management and Ordering System Built with the MERN Stack",
   "main": "server.js",
   "scripts": {
-    "test": "jshint server.js",
+    "test": "node_modules/karma/bin/karma start my.conf.js",
     "install-dependencies": "npm install && npm run install-client",
     "install-client": "cd client && npm install",
     "client": "cd client && npm run start",
@@ -27,11 +27,12 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "jasmine": "^3.2.0",
+    "jasmine-core": "^3.2.1",
     "jshint": "^2.9.6",
     "karma": "^3.0.0",
-    "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.2",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "phantomjs-prebuilt": "^2.1.16",
     "travis": "^0.1.1"
   },
   "repository": {
