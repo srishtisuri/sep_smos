@@ -24,7 +24,7 @@ class LoginPage extends Component {
                 <Form className="text-center" onSubmit={this.handleSubmit} style={{ width: "325px" }}>
                     <img src={logo} />
                     <br /><br />
-                    <h2>Travis the cunt</h2>
+                    <h2 className="title">Please Sign In</h2>
                     <br />
                     <FormGroup>
                         {/* <Label><b>Staff or Student Number</b></Label> */}
