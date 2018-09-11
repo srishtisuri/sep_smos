@@ -1,9 +1,11 @@
 language: node_js
 
+script: node_modules/karma/bin/karma start my.conf.js --single-run
+
 deploy:
   provider: heroku
   api_key:
     secure: W/VKklWHN3VnB2jJo4L1bcVLY4Nfo1s6ufIn3z4zrs1oZL5wWSDu34yZJVdU6OMYozC7gFoma89brO7R5jLQtZoqQoFzLWosQFV7KaKxK7weWGgo0y/ZBYy1Gq0dRyqaE7pitbeCcTDRUktCWTCTlZYwzDXFBBKJmj3KvMKs7IrwxWCRqRjCSZ5pgsS/YJWTL4Lzp7Og8D+zT6Bn9diu1C94j+ED+Qm9nBYQCIH3lA5W5/vJST2ocmfks7lFZWjdkJf1H2EGimcw4ZYGnUKv0OjRVR5QPU/c8Fupgi8kbHp0eeF4hJeN/q33BE6/1zZL2RyUwCPY/G7dri1mV1vBv7dVvTAw+DOcRRUQQs/ltInSfCTqBHBuXYhmvOp6EvuN14MCx7+9L9dhIO5oCS56hcXH4OliPDGHq9TBb898BRe6zVsNwTtC46Offmp8HzecIQNBEU4twWfX4uuIt5wjLvaHo5BPIzlmUsgjp21micCYQ67jej6F2eqKiwY+mkuEK4StwlQ2KYvWs9MwChjMnRv5UerN1yuOqATxEhWiunZdoer4PBH0K3cl+rnQxInifSaeQiqyXWAGHWA8md4hdviknc68bPlEcbRsI9MrcKcU0Uzoz+0kajK/I/e8hHBTq2ghytgtHVWpD7l8CD9/NR4S0x+94084GjgwNKzradk=
-  app: sep-smos
-  on:
-    repo: rishyahluwalia/sep_smos
+  # app: sep-smos
+  # on:
+  #   repo: rishyahluwalia/sep_smos
