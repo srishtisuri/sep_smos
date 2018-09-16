@@ -170,5 +170,30 @@ describe('redirect reducer', () => {
     const existingState = {redirecting: true};
     Reducer(redirectReducer).withState(existingState).expect(action).toReturnState({redirecting: false});
   });
+});
+
+describe('user reducer', () => {
+  beforeEach( () => {
+    initialState = {
+      user: null,
+      authenticated: false,
+  }
+  });
+
+  it('should have initial state', () => {
+    expect(userReducer()).toEqual(initialState);
+  });
+
+  it('should store user', () => {
+    const user = {name: 'test'};
+    const action = {type: 'AUTH_SUCCESS', payload: user};
+    Reducer(userReducer).expect(action).toReturnState({user: user, authenticated: true});
+  });
+
+  it('should logout', () => {
+    const action = {type: 'LOGOUT_SUCCESS'};
+    const existingState = {user: 'test', authenticated: true};
+    Reducer(userReducer).withState(existingState).expect(action).toReturnState(initialState);
+  });
 
 });

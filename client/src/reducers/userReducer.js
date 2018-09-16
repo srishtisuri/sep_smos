@@ -3,7 +3,7 @@ const initialState = {
     authenticated: false,
 }
 
-export default (state = initialState, action) => {
+export default (state = initialState, action = {}) => {
     switch (action.type) {
         case "AUTH_SUCCESS": return{
             ...state,
