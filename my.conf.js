@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Tue Sep 11 2018 09:49:19 GMT+1000 (AEST)
+const webpackConfig = require('./webpack.config.js');
 
 module.exports = function(config) {
   config.set({
@@ -15,7 +16,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'tests/*.js'
+      'tests/**/*.js',
     ],
 
 
@@ -27,7 +28,15 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'tests/**/*.js': ['webpack']
     },
+    webpack: webpackConfig,
+    webpackMiddleware: {
+      //turn off webpack bash output when run the tests
+      noInfo: true,
+      stats: 'errors-only'
+    },
+
 
 
     // test results reporter to use
@@ -55,7 +64,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
 
 
     // Continuous Integration mode

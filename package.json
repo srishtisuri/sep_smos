@@ -24,16 +24,33 @@
     "nodemon": "^1.18.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "*"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "file-loader": "^2.0.0",
     "jasmine-core": "^3.2.1",
+    "jasmine-enzyme": "^6.0.4",
     "jshint": "^2.9.6",
     "karma": "^3.0.0",
+    "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.2",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "phantomjs-prebuilt": "^2.1.16",
-    "travis": "^0.1.1"
+    "karma-webpack": "^3.0.5",
+    "react": "^16.5.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.5.1",
+    "resolve": "^1.8.1",
+    "style-loader": "^0.23.0",
+    "travis": "^0.1.1",
+    "webpack-babel-installer": "^1.0.0"
   },
   "repository": {
     "type": "git",
