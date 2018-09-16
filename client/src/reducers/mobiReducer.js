@@ -2,7 +2,7 @@ const initialState = {
     mobi: false
 }
 
-export default (state = initialState, action) => {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
       case "MOBI_TRUE":
         return { ...state, mobi: true }

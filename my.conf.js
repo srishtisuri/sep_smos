@@ -42,8 +42,15 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'live-html'],
 
+    htmlLiveReporter: {
+      colorScheme: 'earthborn', // light 'jasmine' or dark 'earthborn' scheme
+      defaultTab: 'summary', // 'summary' or 'failures': a tab to start with
+ 
+      // only show one suite and fail log at a time, with keyboard navigation
+      focusMode: false,
+    },
 
     // web server port
     port: 9876,

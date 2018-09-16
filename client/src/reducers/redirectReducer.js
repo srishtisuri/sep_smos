@@ -1,7 +1,7 @@
 const initialState = {
     redirecting: false
 }
-export default (state = initialState, action) => {
+export default (state = initialState, action = {}) => {
     switch (action.type) {
         case "REDIRECT_START":
             return { ...state, redirecting: true }
