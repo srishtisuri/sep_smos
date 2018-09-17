@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Reducer } from 'redux-testkit';
 import errorReducer from '../client/src/reducers/errorReducer';
 import itemReducer from '../client/src/reducers/itemReducer';

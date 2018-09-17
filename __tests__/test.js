@@ -1,6 +1,4 @@
-//import { shallow } from './test/enzyme';
-import React from 'react';
-import {mount} from './enzyme';
+
 
 describe(' String to describe test suite ', function() {
     it(' String to describe test spec ', function() {
