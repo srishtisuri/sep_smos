@@ -8,7 +8,7 @@ import { clearCart } from '../actions/userActions';
 
 
 class CartPage extends Component {
-
+    
     componentDidMount() {
         if(!this.props.authenticated && !this.props.loading){
             this.props.history.push('/')
