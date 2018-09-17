@@ -29,8 +29,6 @@ router.post('/currentUser/addToCart', (req, res) => {
     console.log('adding item to to user cart');
 
     function addToCart (user, itemId) {
-        console.log(user.cart)
-        console.log(itemId)
 
         function saveAndPush (user, item){
             user.cart.push(item);
@@ -50,6 +48,12 @@ router.post('/currentUser/addToCart', (req, res) => {
         .then(data => addToCart(data, req.body.itemId))
         .catch(err => console.log(err));        
 
+})
+
+router.delete('/currentUser/cart', (req, res) => {
+    User.findByIdAndUpdate(req.user._id, {$set: {cart: []}})
+        .then(data => res.json({success: true}))
+        .catch(err => console.log(err));
 })
 
 router.post('/signup', (req, res) => {
