@@ -4,7 +4,8 @@ import logo from '../content/stationery.png'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { redirect } from '../actions/redirectActions';
-class NotFoundPage extends Component {
+
+export class NotFoundPage extends Component {
     constructor(props) {
         super(props);
 

@@ -8,7 +8,7 @@ import { Col, Row, Alert } from 'reactstrap';
 import Loading from './components/Loading';
 import SideBar from './components/SideBar';
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props)
 

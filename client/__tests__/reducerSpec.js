@@ -1,12 +1,12 @@
 
 import { Reducer } from 'redux-testkit';
-import errorReducer from '../client/src/reducers/errorReducer';
-import itemReducer from '../client/src/reducers/itemReducer';
-import loaderReducer from '../client/src/reducers/loaderReducer';
-import mobiReducer from '../client/src/reducers/mobiReducer';
-import notificationReducer from '../client/src/reducers/notificationReducer';
-import redirectReducer from '../client/src/reducers/redirectReducer';
-import userReducer from '../client/src/reducers/userReducer';
+import errorReducer from '../src/reducers/errorReducer';
+import itemReducer from '../src/reducers/itemReducer';
+import loaderReducer from '../src/reducers/loaderReducer';
+import mobiReducer from '../src/reducers/mobiReducer';
+import notificationReducer from '../src/reducers/notificationReducer';
+import redirectReducer from '../src/reducers/redirectReducer';
+import userReducer from '../src/reducers/userReducer';
 
 var initialState = {};
 

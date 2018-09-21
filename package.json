@@ -4,7 +4,9 @@
   "description": "Stationary Management and Ordering System Built with the MERN Stack",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "npm run test-jest && npm run test-cucumber",
+    "test-jest": "cd client && jest",
+    "test-cucumber": "cd client && ./node_modules/.bin/cucumber-js --require-module babel-register",
     "install-dependencies": "npm install && npm run install-client",
     "install-client": "cd client && npm install",
     "client": "cd client && npm run start",
@@ -25,28 +27,6 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "react-router-dom": "*"
-  },
-  "devDependencies": {
-    "babel-jest": "^23.6.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
-    "jest": "^23.6.0",
-    "jshint": "^2.9.6",
-    "react": "^16.5.1",
-    "react-addons-test-utils": "^15.6.2",
-    "react-dom": "^16.5.1",
-    "react-test-renderer": "^16.5.1",
-    "redux-mock-store": "^1.5.3",
-    "redux-testkit": "^1.0.6",
-    "travis": "^0.1.1"
-  },
-  "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup/setupEnzyme.js",
-    "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/setup/"
-    ]
   },
   "repository": {
     "type": "git",
