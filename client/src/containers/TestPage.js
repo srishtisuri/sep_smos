@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'reactstrap';
 import { notify } from '../actions/notificationActions';
+import SortDropDown from '../components/SortDropDown';
 
 
 class TestPage extends Component {
@@ -18,10 +19,17 @@ class TestPage extends Component {
             <Col className="contentBg pl-4 pr-4 pt-3 align-items-center" >
                 <h3>Test</h3>
                 <hr />
-                <h4>This is a test container. You can find it under <code>client > src > containers > TestPage.js </code></h4>
+                <h4>This is a test congsgddsdgtainer.fesffef You cangg find it under <code>client > src > containers > TestPage.js </code></h4>
                 <br/>
-                <h4>Copy and paste this file when creating your own container.</h4>
+                <h4>Copy and paste this file when creating <SortDropDown>
+                    
+                    </SortDropDown>yousdfsdfsdf own container.</h4>
+                <SortDropDown>
+                    
+                </SortDropDown>
             </Col>
+
+            
         );
     }
 }

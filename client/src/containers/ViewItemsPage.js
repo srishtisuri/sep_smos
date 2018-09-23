@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Col } from 'reactstrap';
 import Item from '../components/Item';
+import { sortItems } from '../actions/sortAction';
 import { getItems } from '../actions/itemActions';
 import { notify } from '../actions/notificationActions';
 import { FaPlus } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
+import SortDropDown from '../components/SortDropDown';
 
 class ViewItemsPage extends Component {
     constructor(props) {
@@ -25,7 +27,7 @@ class ViewItemsPage extends Component {
     }
 
     componentWillUnmount() {
-        this.props.dispatch({ type: "CLEAR_ITEMS" })
+        this.props.dispatch({ type: "CLEAR__ITEMS" })
     }
 
     generateItems = (amount) => {
@@ -48,6 +50,11 @@ class ViewItemsPage extends Component {
 
     }
 
+    sortItems = () => {
+        alert("hi");
+        this.props.dispatch(sortItems());
+    }
+
     render() {
         return (
             <Col className="viewitems contentBg pl-4 pr-4 scroll" xs={!this.props.mobi ? "10" : "11"}>
@@ -55,7 +62,9 @@ class ViewItemsPage extends Component {
                     <h3 className="mr-2">Items For Purchase</h3>
                     <div className="ml-auto">
                         <Button size="sm" color="primary" className="mr-2" onClick={()=>this.generateItems(prompt("Enter an amount:"))}><FaPlus /></Button>
-                        <Button size="sm" color="danger" onClick={()=>this.removeItems()}><FaTrashAlt /></Button>
+                        <Button size="sm" color="danger" className="mr-2" onClick={()=>this.removeItems()}><FaTrashAlt /></Button>
+                        <SortDropDown></SortDropDown>
+                        
                     </div>
                 </div>
                 <hr />

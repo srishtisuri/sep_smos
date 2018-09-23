@@ -5,6 +5,7 @@ export const getItems = () => dispatch => {
     axios.get('/api/items')
     .then(res => {
        if (res.data) {
+           console.log(res);
             dispatch({
                type: "GET_ITEMS_SUCCESS",
                payload: res.data
