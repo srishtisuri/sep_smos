@@ -1,10 +1,10 @@
 const initialState = {
-    searchParam: ''
+    value: ''
 }
 export default (state = initialState, action) => {
     switch (action.type) {
         case "SEARCH": return{
-            searchParam: action.payload,
+            value: action.payload,
         }
         default: return state;
     }

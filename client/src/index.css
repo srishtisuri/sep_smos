@@ -10,6 +10,12 @@ body {
   font-family: sans-serif;
 
 }
+
+.testSearch{
+  height:100%;
+  width:100%;
+}
+
 body, html{
   height: 100%;
 }
