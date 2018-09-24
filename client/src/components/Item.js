@@ -44,7 +44,7 @@ class Item extends Component {
     
     handleAddToCart = () => {
         this.toggleModal();
-        this.props.addItemToCart(this.props.item);
+        this.props.addItemToCart(this.props.item._id);
     }
 
     render() {

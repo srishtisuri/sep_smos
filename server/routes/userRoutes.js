@@ -27,16 +27,24 @@ router.get('/currentUser', (req, res) => {
 
 router.post('/currentUser/addToCart', (req, res) => {
     console.log('adding item to to user cart');
+    console.log(req.body);
 
-    function addToCart (user, item) {
-        user.cart.push(item);
-        user.save()
-            .then(data => res.json({success: true, data: data}))
-            .catch(err => res.json({success: false, data: err}));
+    function addToCart (user, itemId) {
+
+        function saveAndPush (user, item){
+            user.cart.push(item);
+            user.save()
+                .then(data => res.json({success: true, data: data}))
+                .catch(err => res.json({success: false, data: err}));
+        }
+
+        Item.findById(itemId)
+            .then(data => saveAndPush(user, data))
+                .catch(err => console.log(err))
     }
 
     User.findById(req.user._id)
-        .then(data => addToCart(data, req.body.item))
+        .then(data => addToCart(data, req.body.itemId))
         .catch(err => console.log(err));        
 
 })
