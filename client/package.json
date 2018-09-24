@@ -45,7 +45,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest --notify && ./node_modules/.bin/cucumber-js --require-module babel-register",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:5000"
