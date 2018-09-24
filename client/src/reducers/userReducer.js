@@ -10,6 +10,10 @@ export default (state = initialState, action = {}) => {
             user:action.payload,
             authenticated: true
         }
+        case "ADD_TO_CART_SUCCESS": return{
+            ...state,
+            user:action.payload
+        }
         case "LOGOUT_SUCCESS": return initialState;
         // case "SIGNUP": return{}
         default: return state;
