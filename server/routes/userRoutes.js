@@ -25,6 +25,39 @@ router.get('/currentUser', (req, res) => {
     }
 })
 
+router.post('/currentUser/addToCart', (req, res) => {
+    console.log('adding item to to user cart');
+    console.log(req.body);
+
+    function addToCart (user, itemId, userQuantity) {
+
+        function saveAndPush (user, item, userQuantity){
+            // push new item instance to cart for quantity
+            for (let index = 0; index < userQuantity; index++) {
+                user.cart.push(item);
+            }
+            user.save()
+                .then(data => res.json({success: true, data: data}))
+                .catch(err => res.json({success: false, data: err}));
+        }
+
+        Item.findById(itemId)
+            .then(data => saveAndPush(user, data, userQuantity))
+                .catch(err => console.log(err))
+    }
+
+    User.findById(req.user._id)
+        .then(data => addToCart(data, req.body.itemId, req.body.userQuantity))
+        .catch(err => console.log(err));        
+
+})
+
+router.delete('/currentUser/cart', (req, res) => {
+    User.findByIdAndUpdate(req.user._id, {$set: {cart: []}})
+        .then(data => res.json({success: true}))
+        .catch(err => console.log(err));
+})
+
 router.post('/signup', (req, res) => {
     const newUser = new User({
         userNumber: req.body.userNumber,
