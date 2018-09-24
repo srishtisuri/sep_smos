@@ -41,6 +41,12 @@ class Item extends Component {
         return false;
     }
 
+    
+    handleAddToCart = () => {
+        this.toggleModal();
+        this.props.addItemToCart(this.props.item._id);
+    }
+
     render() {
         return (
             <Card style={{ width: this.props.mobi ? "100%" : "30%", margin: '0 1% 20px 1%' }}>
@@ -124,7 +130,7 @@ class Item extends Component {
                         </ModalBody>
                         <ModalFooter>
                             <Button color="info" onClick={this.toggleModal}>View My Cart</Button>
-                            <Button color="success" onClick={this.toggleModal}>Add To Cart</Button>
+                            <Button color="success" onClick={()=>this.handleAddToCart()}>Add to cart</Button>
                         </ModalFooter>
                     </Modal>
                     {/*  */}
