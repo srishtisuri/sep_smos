@@ -49,8 +49,8 @@ class ViewItemsPage extends Component {
 
     }
 
-    addItemToCart = (itemId) => {
-        this.props.dispatch(addToCart(itemId))
+    addItemToCart = (itemId, itemQuantity) => {
+        this.props.dispatch(addToCart(itemId, itemQuantity))
     }
 
     render() {
