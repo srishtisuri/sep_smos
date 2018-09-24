@@ -2,7 +2,7 @@ const initialState = {
     items: [],
     fetched: false
 }
-export default (state = initialState, action) => {
+export default (state = initialState, action = {}) => {
     switch (action.type) {
         case "GET_ITEMS_SUCCESS": return{
             ...state,

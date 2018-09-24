@@ -2,22 +2,29 @@
   "name": "sep_smos",
   "version": "1.0.0",
   "description": "Stationary Management and Ordering System Built with the MERN Stack",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "install-dependencies": "npm install && npm run install-server && npm run install-client",
+    "install-dependencies": "npm install && npm run install-client",
     "install-client": "cd client && npm install",
-    "install-server": "cd server && npm install",
     "client": "cd client && npm run start",
-    "server": "cd server && npm run start",
-    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
+    "build": "cd client && npm run build",
+    "start": "nodemon server.js",
+    "dev": "concurrently --kill-others \"npm run start\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "concurrently": "^3.6.1",
-    "react-router-dom": "^4.3.1"
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.2.7",
+    "nodemon": "^1.18.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "react-router-dom": "*"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rishyahluwalia/sep_smos.git"
