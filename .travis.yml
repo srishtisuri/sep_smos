@@ -16,4 +16,4 @@ deploy:
   app: sep-smos
   on:
     repo: rishyahluwalia/sep_smos
-    branch: travis
+    branch: master
