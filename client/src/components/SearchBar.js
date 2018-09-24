@@ -1,59 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { getItems } from '../actions/itemActions';
 import Autosuggest from 'react-autosuggest';
-
-// import {
-//   Collapse,
-//   Navbar,
-//   NavbarToggler,
-//   NavbarBrand,
-// } from 'reactstrap';
-// import { FaSearch } from 'react-icons/fa';
-// import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
-// import { search } from '../actions/searchActions';
-
-
-const languages = [
-  {
-    name: 'C',
-    year: 1972
-  },
-  {
-    name: 'Elm',
-    year: 2012
-  }
-];
-
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
-const getSuggestionValue = suggestion => suggestion.name;
-
-// Use your imagination to render suggestions.
-const renderSuggestion = suggestion => (
-  <div>
-    {suggestion.name}
-  </div>
-);
-
-const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0 ? [] : languages.filter(lang =>
-    lang.name.toLowerCase().slice(0, inputLength) === inputValue
-  );
-};
-
-
+import '../css/searchBar.css'
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
+    if (!this.props.fetched) {
+      this.props.dispatch(getItems());
+    }
+
     this.state = {
-      //searchParam: '',
-      isOpen: false,
       value: '',
       suggestions: []
     };
@@ -65,11 +24,26 @@ class SearchBar extends Component {
     });
   };
 
+  getSuggestions = value => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    return inputLength === 0 ? [] : this.props.items.filter(item =>
+      item.name.toLowerCase().includes(inputValue)
+    );
+  };
+
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: this.getSuggestions(value)
+    });
+  };
+
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: []
     });
   };
 
@@ -80,12 +54,21 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { value, suggestions } = this.state;
 
+    const getSuggestionValue = suggestion => suggestion.name;
+
+    // Use your imagination to render suggestions.
+    const renderSuggestion = suggestion => (
+      <div className="bg-light">
+        {suggestion.name}
+      </div>
+    );
+
+    const { value, suggestions } = this.state;
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: 'Search for a product',
-      value,
+      value: value,
       onChange: this.onChange
     };
 
@@ -104,7 +87,9 @@ class SearchBar extends Component {
 
 function mapStateToProps(state) {
   return {
-    value: state.search.value
+    value: state.search.value,
+    fetched: state.items.fetched,
+    items: state.items.items
   }
 }
 

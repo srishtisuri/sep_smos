@@ -74,7 +74,7 @@ const mapStateToProps = (state) => ({
     items: state.items.items,
     fetched: state.items.fetched,
     mobi: state.mobi.mobi,
-    searchParam: state.search.searchParam
+    value: state.search.value
 })
 
 
