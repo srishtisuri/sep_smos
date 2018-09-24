@@ -30,7 +30,7 @@ class CartItem extends Component {
             <Card style={{ width: this.props.mobi ? "100%" : "30%", margin: '0 1% 20px 1%'}}>
                 <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                 <CardBody className="bg-light">
-                    <CardTitle>{this.props.item.name}</CardTitle>
+                    <CardTitle>{this.props.item.quantity}x {this.props.item.name}</CardTitle>
                     <CardSubtitle>${this.props.item.price}</CardSubtitle>
                     <CardText>{this.props.item.description}</CardText>
                     <Button onClick={this.toggle}>View</Button>
