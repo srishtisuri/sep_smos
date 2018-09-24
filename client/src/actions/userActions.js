@@ -124,3 +124,61 @@ export const signup = (userNumber, password, history) => dispatch => {
         })
         .catch(err => console.log(err))
 };
+
+export const addToCart = (itemId) => dispatch => {
+    // dispatch({ type: "LOADING_START" })
+    dispatch(pushErr({
+        type: "CLEAR_ERRORS",
+    }))
+    axios.post('/api/users/currentUser/addToCart', {
+        itemId
+    })
+        .then(res => {
+            if (res.data.success) {
+                dispatch(pushErr({
+                    type: "ADD_TO_CART_SUCCESS",
+                    payload: res.data.data
+                }))
+                dispatch(notify("success", "Item added to cart!"))
+            } else {
+                dispatch(pushErr({
+                    type: "ADD_TO_CART_FAIL",
+                    payload: "Something Went Wrong"
+                }))
+                dispatch(notify("danger", "An error occured while adding to cart!"))
+
+            }
+        })
+        .then(() => {
+            // setTimeout(()=>{
+            //     dispatch({ type: "LOADING_FIN" })    
+            // }, 250)
+        })
+        .catch(err => console.log(err))
+};
+
+export const clearCart = () => dispatch => {
+    dispatch(pushErr({
+        type: "CLEAR_ERRORS",
+    }))
+    axios.delete('/api/users/currentUser/cart')
+        .then(res => {
+            if (res.data.success) {
+                dispatch(pushErr({
+                    type: "CLEAR_CART_SUCCESS",
+                    payload: res.data.data
+                }))
+                dispatch(notify("success", "Cart cleared!"))
+            } else {
+                dispatch(pushErr({
+                    type: "CLEAR_CART_FAIL",
+                    payload: "Something Went Wrong"
+                }))
+                dispatch(notify("danger", "An error occured while clearing the cart!"))
+            }
+        })
+        .then(() => {
+            dispatch(checkAuth())
+        })
+        .catch(err => console.log(err))
+};

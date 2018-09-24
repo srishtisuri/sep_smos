@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Col } from 'reactstrap';
 import Item from '../components/Item';
 import { getItems } from '../actions/itemActions';
+import { addToCart } from '../actions/userActions';
 import { notify } from '../actions/notificationActions';
 import { FaPlus } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
@@ -38,7 +39,7 @@ class ViewItemsPage extends Component {
 
     removeItems = () => {
         if(this.props.items.length!=0){
-            axios.get('/api/items/deleteData/')
+            axios.delete('/api/items/deleteData/')
             .then(()=>this.props.dispatch(notify("success", "Items successfully deleted!")))
             .then(()=>this.props.dispatch(getItems()))
             .catch(err=>console.log(err))
@@ -46,6 +47,10 @@ class ViewItemsPage extends Component {
             this.props.dispatch(notify("danger", "There are no items to delete!"))
         }
 
+    }
+
+    addItemToCart = (itemId) => {
+        this.props.dispatch(addToCart(itemId))
     }
 
     render() {
@@ -60,7 +65,7 @@ class ViewItemsPage extends Component {
                 </div>
                 <hr />
                 <div className="flexwrap justify-content-center">
-                    {this.props.fetched && this.props.items.map(item => <Item key={item._id} item={item} mobi={this.props.mobi} />)}
+                    {this.props.fetched && this.props.items.map(item => <Item addItemToCart={this.addItemToCart} key={item._id} item={item} mobi={this.props.mobi} />)}
                 </div>
             </Col>
         );
