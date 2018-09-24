@@ -125,13 +125,13 @@ export const signup = (userNumber, password, history) => dispatch => {
         .catch(err => console.log(err))
 };
 
-export const addToCart = (itemId, itemQuanity) => dispatch => {
+export const addToCart = (item) => dispatch => {
     // dispatch({ type: "LOADING_START" })
     dispatch(pushErr({
         type: "CLEAR_ERRORS",
     }))
     axios.post('/api/users/currentUser/addToCart', {
-        itemId, itemQuanity
+        item
     })
         .then(res => {
             if (res.data.success) {

@@ -28,7 +28,7 @@ router.get('/currentUser', (req, res) => {
 router.post('/currentUser/addToCart', (req, res) => {
     console.log('adding item to to user cart');
 
-    function addToCart (user, itemId) {
+    function addToCart (user, item) {
 
         function saveAndPush (user, item){
             user.cart.push(item);
@@ -37,15 +37,14 @@ router.post('/currentUser/addToCart', (req, res) => {
                 .catch(err => res.json({success: false, data: err}));
         }
 
-        Item.findById(itemId)
-            .then(data => saveAndPush(user, data))
-                .catch(err => console.log(err))
+        saveAndPush(user, item)
+            .catch(err => console.log(err))
 
         
     }
 
     User.findById(req.user._id)
-        .then(data => addToCart(data, req.body.itemId))
+        .then(data => addToCart(data, req.body.item))
         .catch(err => console.log(err));        
 
 })
