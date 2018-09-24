@@ -1,3 +1,0 @@
-Item Pictures
-Padding under item for purchase title
-Item Modal
