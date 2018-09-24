@@ -4,9 +4,7 @@
   "description": "Stationary Management and Ordering System Built with the MERN Stack",
   "main": "server.js",
   "scripts": {
-    "test": "npm run test-jest && npm run test-cucumber",
-    "test-jest": "cd client && jest",
-    "test-cucumber": "cd client && ./node_modules/.bin/cucumber-js --require-module babel-register",
+    "test": "cd client && npm test",
     "install-dependencies": "npm install && npm run install-client",
     "install-client": "cd client && npm install",
     "client": "cd client && npm run start",
