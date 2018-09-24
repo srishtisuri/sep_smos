@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Col, Button } from 'reactstrap';
+import { Col, Button, Table } from 'reactstrap';
 import { notify } from '../actions/notificationActions';
 import CartItem from '../components/CartItem';
 import { FaTrashAlt } from 'react-icons/fa';
@@ -32,7 +32,19 @@ class CartPage extends Component {
                 </div>
                 <hr />
                 <div className="flexwrap justify-content-center">
-                    {this.props.authenticated && this.props.user.cart.map(item => item?<CartItem key={item._id} item={item} mobi={this.props.mobi} />:null)}
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.authenticated && this.props.user.cart.map(item => item?<CartItem key={item._id} item={item} mobi={this.props.mobi} />:null)}
+                    </tbody>
+                </Table>
                 </div>
                 
             </Col>
