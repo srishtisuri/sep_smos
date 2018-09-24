@@ -130,7 +130,11 @@ class Item extends Component {
                         </ModalBody>
                         <ModalFooter>
                             <Button color="info" onClick={this.toggleModal}>View My Cart</Button>
-                            <Button color="success" onClick={()=>this.handleAddToCart()}>Add to cart</Button>
+                            <Button 
+                            color="success" 
+                            onClick={()=>this.handleAddToCart()}
+                            disabled={this.checkQuantity() ? false : true}
+                            >Add to cart</Button>
                         </ModalFooter>
                     </Modal>
                     {/*  */}
